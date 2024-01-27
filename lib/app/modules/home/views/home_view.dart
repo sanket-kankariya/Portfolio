@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
+import 'package:sanketkportfolio/colors.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -12,41 +13,127 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF14131A),
-      appBar: AppBar(
-        toolbarHeight: 80,
-        backgroundColor: Colors.transparent,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 30.0),
-            child: ElevatedButton(
-              style: ButtonStyle(
-                shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(5)))),
-                backgroundColor: MaterialStatePropertyAll(
-                  Color(0xFF207448),
-                ),
-              ),
-              onPressed: () {},
-              child: Wrap(
-                direction: Axis.horizontal,
-                children: [
-                  const Text(
-                    'Contact Me',
-                    style: TextStyle(
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+      backgroundColor: Kcolor.darkPurple,
+      appBar: appbar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Header(),
+              title("What I Know"),
+              Wrap(
+                spacing: (Get.width / 5) / 5,
+                direction: Axis.horizontal,
+                children: [
+                  WhatIKnowCard(title: 'Frontend'),
+                  WhatIKnowCard(title: 'Backend'),
+                  WhatIKnowCard(title: 'Database'),
+                  WhatIKnowCard(title: 'Dev Ops'),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding title(String name) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 30, 0, 10),
+      child: Text(
+        name,
+        style: TextStyle(
+            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
+      ),
+    );
+  }
+
+  AppBar appbar() {
+    return AppBar(
+      toolbarHeight: 80,
+      backgroundColor: Colors.transparent,
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 30.0),
+          child: ElevatedButton(
+            style: ButtonStyle(
+              shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(5)))),
+              backgroundColor: MaterialStatePropertyAll(
+                Color(0xFF207448),
+              ),
+            ),
+            onPressed: () {},
+            child: Wrap(
+              direction: Axis.horizontal,
+              children: [
+                const Text(
+                  'Contact Me',
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class WhatIKnowCard extends StatelessWidget {
+  final String title;
+  WhatIKnowCard({
+    required this.title,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: Container(
+        width: Get.width / 6,
+        height: (Get.width / 6) * 1.5,
+        color: Kcolor.indigo,
         child: Column(
-          children: [Header()],
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 15, 0, 10),
+              child: Text(
+                title,
+                style: TextStyle(
+                    color: Kcolor.grey,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              child: Wrap(children: [
+                OutlinedButton(
+                  onPressed: () {},
+                  child: Text("Skill"),
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Kcolor.darkPurple),
+                    side: MaterialStatePropertyAll(
+                        BorderSide(color: Colors.green)),
+                    foregroundColor: MaterialStatePropertyAll(Kcolor.grey),
+                    shape: MaterialStatePropertyAll(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5)),
+                    ),
+                  ),
+                ),
+              ]),
+            )
+          ],
         ),
       ),
     );
