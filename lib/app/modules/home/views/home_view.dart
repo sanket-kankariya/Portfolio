@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:sanketkportfolio/colors.dart';
+import 'package:sanketkportfolio/data.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -98,7 +99,7 @@ class WhatIKnowCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       child: Container(
         width: Get.width / 6,
-        height: (Get.width / 6) * 1.5,
+        height: (Get.width / 6) * 1.7,
         color: Kcolor.indigo,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,25 +116,32 @@ class WhatIKnowCard extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.all(10),
-              child: Wrap(children: [
-                OutlinedButton(
-                  onPressed: () {},
-                  child: Text("Skill"),
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Kcolor.darkPurple),
-                    side: MaterialStatePropertyAll(
-                        BorderSide(color: Colors.green)),
-                    foregroundColor: MaterialStatePropertyAll(Kcolor.grey),
-                    shape: MaterialStatePropertyAll(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5)),
-                    ),
-                  ),
-                ),
-              ]),
+              child: Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: skills[title]
+                          ?.entries
+                          .map((e) => skillChip(e))
+                          .toList() ??
+                      []),
             )
           ],
+        ),
+      ),
+    );
+  }
+
+  OutlinedButton skillChip(MapEntry<String, Color> e) {
+    return OutlinedButton(
+      onPressed: () {},
+      child: Text(e.key),
+      style: ButtonStyle(
+        padding: MaterialStatePropertyAll(EdgeInsets.all(5)),
+        backgroundColor: MaterialStateProperty.all(Kcolor.darkPurple),
+        side: MaterialStatePropertyAll(BorderSide(color: e.value)),
+        foregroundColor: MaterialStatePropertyAll(Kcolor.grey),
+        shape: MaterialStatePropertyAll(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         ),
       ),
     );
