@@ -33,7 +33,8 @@ class HomeView extends GetView<HomeController> {
                   WhatIKnowCard(title: 'Database'),
                   WhatIKnowCard(title: 'Dev Ops'),
                 ],
-              )
+              ),
+              title("Projects"),
             ],
           ),
         ),
@@ -206,23 +207,64 @@ class Header extends StatelessWidget {
           SizedBox(),
           SizedBox(),
           SizedBox(),
-          ElevatedButton.icon(
-            onPressed: () {},
-            icon: Icon(FontAwesomeIcons.instagram),
-            label: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
-              child: Text('Follow me on Instagram'),
-            ),
-            style: ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll(Color(0xFF1c1b23)),
-              shape: MaterialStatePropertyAll(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
-                ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SocialMediaButton(
+                appname: 'Instagram',
+                color: Kcolor.darkPurple,
+                icon: Icon(FontAwesomeIcons.instagram),
+                link: '',
               ),
-            ),
+              SocialMediaButton(
+                appname: 'X',
+                color: Colors.black,
+                icon: Icon(FontAwesomeIcons.xTwitter),
+                link: '',
+              ),
+            ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class SocialMediaButton extends StatelessWidget {
+  final String appname;
+  final String link;
+  final Icon icon;
+  final Color color;
+  const SocialMediaButton({
+    super.key,
+    required this.appname,
+    required this.link,
+    required this.icon,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton.icon(
+      onPressed: () {},
+      icon: icon,
+      label: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        child: Text(
+          'Follow me on $appname',
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+      style: ButtonStyle(
+        elevation: MaterialStatePropertyAll(0),
+        fixedSize: MaterialStatePropertyAll(Size(250, 40)),
+        iconColor: MaterialStatePropertyAll(Colors.white),
+        backgroundColor: MaterialStateProperty.all(color),
+        shape: MaterialStatePropertyAll(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+          ),
+        ),
       ),
     );
   }
