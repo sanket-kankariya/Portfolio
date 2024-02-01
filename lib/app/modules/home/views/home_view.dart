@@ -10,9 +10,10 @@ import 'package:sanketkportfolio/data.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+  HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    Get.put(HomeController());
     return Scaffold(
       backgroundColor: Kcolor.darkPurple,
       appBar: appbar(),
@@ -159,14 +160,12 @@ class Header extends StatelessWidget {
     return Container(
       height: 200,
       width: Get.width,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: NetworkImage(
-            'https://images.unsplash.com/photo-1614850715973-58c3167b30a0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-          ),
-          fit: BoxFit.cover,
-        ),
-      ),
+      // decoration: BoxDecoration(
+      //   image: DecorationImage(
+      //     image: NetworkImage(''),
+      //     fit: BoxFit.cover,
+      //   ),
+      // ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -178,8 +177,7 @@ class Header extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(200),
                 child: Image.network(
-                  'https://ez-snippet.vercel.app/_next/image?url=%2Fimages%2FprofilePic.jpeg&w=256&q=75',
-                ),
+                    'https://media.licdn.com/dms/image/C5103AQFyGWFFCKheig/profile-displayphoto-shrink_400_400/0/1579776175137?e=1712188800&v=beta&t=Tl-s5MMxqL9VUk3WZt8hFg_hS5OguKyBHi1_CBl4cGU'),
               ),
             ),
           ),
@@ -189,14 +187,26 @@ class Header extends StatelessWidget {
               Text(
                 'Sanket Kankariya',
                 style: TextStyle(
+                  shadows: [
+                    Shadow(
+                        color: Colors.black,
+                        offset: Offset(5, 5),
+                        blurRadius: 5)
+                  ],
                   color: Colors.white,
                   fontSize: 32,
                   fontWeight: FontWeight.w900,
                 ),
               ),
               Text(
-                '@AverageEnjoyer',
+                '@MemeAddict',
                 style: TextStyle(
+                  shadows: [
+                    Shadow(
+                        color: Colors.black,
+                        offset: Offset(5, 5),
+                        blurRadius: 5)
+                  ],
                   color: Colors.white,
                   fontSize: 14,
                   fontWeight: FontWeight.normal,
@@ -211,9 +221,38 @@ class Header extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               SocialMediaButton(
+                appname: 'Stack Overflow',
+                color: Color(0xFFF48024),
+                icon: Icon(FontAwesomeIcons.stackOverflow),
+                link: '',
+              ),
+              SocialMediaButton(
+                appname: 'Youtube',
+                color: Color(0xFFFF0000),
+                icon: Icon(FontAwesomeIcons.youtube),
+                link: '',
+              ),
+              SocialMediaButton(
+                appname: 'Github',
+                color: Color(0xFF2B3137),
+                icon: Icon(FontAwesomeIcons.github),
+                link: '',
+              ),
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SocialMediaButton(
                 appname: 'Instagram',
-                color: Kcolor.darkPurple,
+                color: Color(0xFF833AB4),
                 icon: Icon(FontAwesomeIcons.instagram),
+                link: '',
+              ),
+              SocialMediaButton(
+                appname: 'Linked In',
+                color: Colors.blue,
+                icon: Icon(FontAwesomeIcons.linkedin),
                 link: '',
               ),
               SocialMediaButton(
@@ -245,24 +284,27 @@ class SocialMediaButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      onPressed: () {},
-      icon: icon,
-      label: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10.0),
-        child: Text(
-          'Follow me on $appname',
-          style: TextStyle(color: Colors.white),
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: ElevatedButton.icon(
+        onPressed: () {},
+        icon: icon,
+        label: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10.0),
+          child: Text(
+            'Follow me on ',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
-      ),
-      style: ButtonStyle(
-        elevation: MaterialStatePropertyAll(0),
-        fixedSize: MaterialStatePropertyAll(Size(250, 40)),
-        iconColor: MaterialStatePropertyAll(Colors.white),
-        backgroundColor: MaterialStateProperty.all(color),
-        shape: MaterialStatePropertyAll(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5),
+        style: ButtonStyle(
+          elevation: MaterialStatePropertyAll(0),
+          fixedSize: MaterialStatePropertyAll(Size(200, 40)),
+          iconColor: MaterialStatePropertyAll(Colors.white),
+          backgroundColor: MaterialStateProperty.all(color),
+          shape: MaterialStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5),
+            ),
           ),
         ),
       ),
