@@ -13,7 +13,7 @@ class HomeView extends GetView<HomeController> {
   HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Get.put(HomeController());
+    // Get.put(HomeController());
     return Scaffold(
       backgroundColor: Kcolor.darkPurple,
       appBar: appbar(),
@@ -74,9 +74,9 @@ class HomeView extends GetView<HomeController> {
               direction: Axis.horizontal,
               children: [
                 const Text(
-                  'Contact Me',
+                  'Resume',
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Colors.white,
                   ),
                 ),
               ],
@@ -150,122 +150,124 @@ class WhatIKnowCard extends StatelessWidget {
   }
 }
 
-class Header extends StatelessWidget {
+class Header extends GetView<HomeController> {
   const Header({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      width: Get.width,
-      // decoration: BoxDecoration(
-      //   image: DecorationImage(
-      //     image: NetworkImage(''),
-      //     fit: BoxFit.cover,
-      //   ),
-      // ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          CircleAvatar(
-            radius: 70,
-            backgroundColor: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(200),
-                child: Image.network(
-                    'https://media.licdn.com/dms/image/C5103AQFyGWFFCKheig/profile-displayphoto-shrink_400_400/0/1579776175137?e=1712188800&v=beta&t=Tl-s5MMxqL9VUk3WZt8hFg_hS5OguKyBHi1_CBl4cGU'),
-              ),
-            ),
+    return Obx(() => Container(
+          height: 200,
+          width: Get.width,
+          decoration: BoxDecoration(
+            image: controller.headerbgimg.value != null
+                ? DecorationImage(
+                    image: NetworkImage(controller.headerbgimg.value!),
+                    fit: BoxFit.cover,
+                  )
+                : null,
           ),
-          Wrap(
-            direction: Axis.vertical,
-            children: [
-              Text(
-                'Sanket Kankariya',
-                style: TextStyle(
-                  shadows: [
-                    Shadow(
-                        color: Colors.black,
-                        offset: Offset(5, 5),
-                        blurRadius: 5)
-                  ],
-                  color: Colors.white,
-                  fontSize: 32,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-              Text(
-                '@MemeAddict',
-                style: TextStyle(
-                  shadows: [
-                    Shadow(
-                        color: Colors.black,
-                        offset: Offset(5, 5),
-                        blurRadius: 5)
-                  ],
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(),
-          SizedBox(),
-          SizedBox(),
-          Column(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SocialMediaButton(
-                appname: 'Stack Overflow',
-                color: Color(0xFFF48024),
-                icon: Icon(FontAwesomeIcons.stackOverflow),
-                link: '',
+              CircleAvatar(
+                radius: 70,
+                backgroundColor: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(200),
+                    child: Image.network(
+                        'https://media.licdn.com/dms/image/C5103AQFyGWFFCKheig/profile-displayphoto-shrink_400_400/0/1579776175137?e=1712188800&v=beta&t=Tl-s5MMxqL9VUk3WZt8hFg_hS5OguKyBHi1_CBl4cGU'),
+                  ),
+                ),
               ),
-              SocialMediaButton(
-                appname: 'Youtube',
-                color: Color(0xFFFF0000),
-                icon: Icon(FontAwesomeIcons.youtube),
-                link: '',
+              Wrap(
+                direction: Axis.vertical,
+                children: [
+                  Text(
+                    'Sanket Kankariya',
+                    style: TextStyle(
+                      shadows: [
+                        Shadow(
+                            color: Colors.black,
+                            offset: Offset(5, 5),
+                            blurRadius: 5)
+                      ],
+                      color: Colors.white,
+                      fontSize: 32,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  Text(
+                    '@MemeAddict',
+                    style: TextStyle(
+                      shadows: [
+                        Shadow(
+                            color: Colors.black,
+                            offset: Offset(5, 5),
+                            blurRadius: 5)
+                      ],
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ],
               ),
-              SocialMediaButton(
-                appname: 'Github',
-                color: Color(0xFF2B3137),
-                icon: Icon(FontAwesomeIcons.github),
-                link: '',
+              SizedBox(),
+              SizedBox(),
+              SizedBox(),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SocialMediaButton(
+                    appname: 'Stack Overflow',
+                    color: Color(0xFFF48024),
+                    icon: Icon(FontAwesomeIcons.stackOverflow),
+                    link: '',
+                  ),
+                  SocialMediaButton(
+                    appname: 'Youtube',
+                    color: Color(0xFFFF0000),
+                    icon: Icon(FontAwesomeIcons.youtube),
+                    link: '',
+                  ),
+                  SocialMediaButton(
+                    appname: 'Github',
+                    color: Color(0xFF2B3137),
+                    icon: Icon(FontAwesomeIcons.github),
+                    link: '',
+                  ),
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SocialMediaButton(
+                    appname: 'Instagram',
+                    color: Color(0xFF833AB4),
+                    icon: Icon(FontAwesomeIcons.instagram),
+                    link: '',
+                  ),
+                  SocialMediaButton(
+                    appname: 'Linked In',
+                    color: Colors.blue,
+                    icon: Icon(FontAwesomeIcons.linkedin),
+                    link: '',
+                  ),
+                  SocialMediaButton(
+                    appname: 'X',
+                    color: Colors.black,
+                    icon: Icon(FontAwesomeIcons.xTwitter),
+                    link: '',
+                  ),
+                ],
               ),
             ],
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              SocialMediaButton(
-                appname: 'Instagram',
-                color: Color(0xFF833AB4),
-                icon: Icon(FontAwesomeIcons.instagram),
-                link: '',
-              ),
-              SocialMediaButton(
-                appname: 'Linked In',
-                color: Colors.blue,
-                icon: Icon(FontAwesomeIcons.linkedin),
-                link: '',
-              ),
-              SocialMediaButton(
-                appname: 'X',
-                color: Colors.black,
-                icon: Icon(FontAwesomeIcons.xTwitter),
-                link: '',
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
+        ));
   }
 }
 

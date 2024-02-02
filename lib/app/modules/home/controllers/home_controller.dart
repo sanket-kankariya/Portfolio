@@ -7,10 +7,11 @@ import 'package:sanketkportfolio/secretkeys.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
+  final RxnString headerbgimg = RxnString(null);
 
   @override
   void onInit() async {
-    print(await getHeaderImage());
+    headerbgimg(await getHeaderImage());
     super.onInit();
   }
 
@@ -26,12 +27,7 @@ class HomeController extends GetxController {
 }
 
 Future<String> getHeaderImage() async {
-  print("object");
-  http.Response response = await http.get(Uri.https(
-      'https://api.unsplash.com/photos/random?client_id=$unsplashApiKey&per_page=1'));
-  print(response.body);
-
-  jsonDecode(response.body)['urls']['regular'];
-  print(jsonDecode(response.body));
-  return "df";
+  http.Response response = await http.get(Uri.parse(
+      'https://api.unsplash.com/photos/random?client_id=$unsplashApiKey&per_page=1&query=abstract'));
+  return jsonDecode(response.body)['urls']['regular'];
 }
