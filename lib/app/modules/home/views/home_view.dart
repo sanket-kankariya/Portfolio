@@ -36,6 +36,13 @@ class HomeView extends GetView<HomeController> {
                 ],
               ),
               title("Projects"),
+              GridView.count(
+                shrinkWrap: true,
+                crossAxisCount: 5,
+                children: [
+                  ProjectCard(name: "Discord Clone", discription: "", imageurl: ""),
+                ],
+              )
             ],
           ),
         ),
@@ -84,6 +91,56 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
       ],
+    );
+  }
+}
+
+class ProjectCard extends StatelessWidget {
+  const ProjectCard({
+    super.key,
+    required this.discription,
+    required this.imageurl,
+    required this.name,
+  });
+  final String imageurl;
+  final String name;
+  final String discription;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.network(
+                imageurl,
+                fit: BoxFit.cover,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  name,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                child: Text(
+                  discription,
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
