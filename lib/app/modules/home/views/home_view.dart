@@ -40,7 +40,7 @@ class HomeView extends GetView<HomeController> {
                 shrinkWrap: true,
                 crossAxisCount: 5,
                 children: [
-                  ProjectCard(name: "Discord Clone", discription: "", imageurl: ""),
+                  ProjectCard(name: "Discord Clone", discription: "", imageurl: "dfxg"),
                 ],
               )
             ],
