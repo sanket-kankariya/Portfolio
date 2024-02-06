@@ -15,7 +15,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  get_cli: ^1.8.4
 
 flutter:
   uses-material-design: true
