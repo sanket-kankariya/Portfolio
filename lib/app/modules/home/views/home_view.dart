@@ -38,8 +38,8 @@ class HomeView extends GetView<HomeController> {
                 shrinkWrap: true,
                 crossAxisCount: 5,
                 children: [
-                  ProjectCard(
-                      name: "Discord Clone", discription: "", imageurl: "dfxg"),
+                  // ProjectCard(
+                  //     name: "Discord Clone", discription: "", imageurl: "dfxg"),
                 ],
               )
             ],
@@ -217,12 +217,10 @@ class Header extends GetView<HomeController> {
           height: 200,
           width: Get.width,
           decoration: BoxDecoration(
-            image: controller.headerbgimg.value != null
-                ? DecorationImage(
-                    image: NetworkImage(controller.headerbgimg.value!),
-                    fit: BoxFit.cover,
-                  )
-                : null,
+            image: DecorationImage(
+              image: NetworkImage(controller.headerbgimg.value!),
+              fit: BoxFit.cover,
+            ),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

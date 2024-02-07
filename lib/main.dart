@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:sanketkportfolio/app/routes/app_pages.dart';
 
 void main() async{
-  await dotenv.load(fileName: ".env");
+  // await dotenv.load();
   runApp(GetMaterialApp(
     title: 'AboutMe',
     initialRoute: AppPages.INITIAL,
