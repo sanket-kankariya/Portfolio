@@ -11,7 +11,6 @@ class HomeView extends GetView<HomeController> {
   HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    // Get.put(HomeController());
     return Scaffold(
       backgroundColor: Kcolor.darkPurple,
       appBar: appbar(),
@@ -38,8 +37,12 @@ class HomeView extends GetView<HomeController> {
                 shrinkWrap: true,
                 crossAxisCount: 5,
                 children: [
-                  // ProjectCard(
-                  //     name: "Discord Clone", discription: "", imageurl: "dfxg"),
+                  ProjectCard(
+                    name: "MongoDB Clone",
+                    discription: "Bash Script",
+                    imageurl:
+                        "https://tkp9ew6igwri5hif.public.blob.vercel-storage.com/Assets/mongodb-8ZOEMsiSZ8cUF6dqLqHxNKAQwKA2QA.png",
+                  ),
                 ],
               )
             ],
@@ -218,7 +221,7 @@ class Header extends GetView<HomeController> {
           width: Get.width,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(controller.headerbgimg.value!),
+              image: NetworkImage(controller.headerbgimg.value),
               fit: BoxFit.cover,
             ),
           ),
@@ -255,7 +258,7 @@ class Header extends GetView<HomeController> {
                     ),
                   ),
                   Text(
-                    '@MemeAddict',
+                    '@Memes',
                     style: TextStyle(
                       shadows: [
                         Shadow(
