@@ -43,6 +43,48 @@ class HomeView extends GetView<HomeController> {
                     imageurl:
                         "https://tkp9ew6igwri5hif.public.blob.vercel-storage.com/Assets/mongodb-8ZOEMsiSZ8cUF6dqLqHxNKAQwKA2QA.png",
                   ),
+                  ProjectCard(
+                    name: "Covid 19 Data Tracker",
+                    discription: "Flutter, Government Covid APIs",
+                    imageurl:
+                        "https://tkp9ew6igwri5hif.public.blob.vercel-storage.com/Assets/Covid%20app-UdzXAmlneKjpEwYdiHnBXiE0DA0Qrb.png",
+                  ),
+                  ProjectCard(
+                    name: "Music Player",
+                    discription: "Flutter",
+                    imageurl:
+                        "https://tkp9ew6igwri5hif.public.blob.vercel-storage.com/Music%20Player-nmsDNHQMpndHT0l8M9i6xVSibMh30X.png",
+                  ),
+                  ProjectCard(
+                    name: "Instagram Clone",
+                    discription: "",
+                    imageurl:
+                        "https://tkp9ew6igwri5hif.public.blob.vercel-storage.com/instagram-yhL9Ppf04Q99KvIUbCKvneKbbDJm4L.jpg",
+                  ),
+                  ProjectCard(
+                    name: "Netflix Clone",
+                    discription: "",
+                    imageurl:
+                        "https://tkp9ew6igwri5hif.public.blob.vercel-storage.com/Netflix-uffGGqq1SlDy0FMog78N5h3b2EeRDs.png",
+                  ),
+                  ProjectCard(
+                    name: "Whatsapp Clone With Modified Features for Business",
+                    discription: "",
+                    imageurl:
+                        "https://tkp9ew6igwri5hif.public.blob.vercel-storage.com/whatsapp-BacVfbwi8dUzagrm7fvuB2Fr3MMeXd.png",
+                  ),
+                  ProjectCard(
+                    name: "Trello Clone",
+                    discription: "",
+                    imageurl:
+                        "https://tkp9ew6igwri5hif.public.blob.vercel-storage.com/Trello-Logo-8w4EEx4IJDOB9VXST4yvd4RMSRbNRz.png",
+                  ),
+                  ProjectCard(
+                    name: "Food Dilevery App",
+                    discription: "",
+                    imageurl:
+                        "https://tkp9ew6igwri5hif.public.blob.vercel-storage.com/Food%20Dilevery-ZviPXxXDHkzQvk6v2GtNMrxvPPqaHj.png",
+                  ),
                 ],
               )
             ],
@@ -122,6 +164,7 @@ class ProjectCard extends StatelessWidget {
               Image.network(
                 imageurl,
                 fit: BoxFit.cover,
+                height: 140,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
