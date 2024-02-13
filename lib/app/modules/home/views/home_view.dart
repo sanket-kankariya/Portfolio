@@ -65,7 +65,7 @@ class HomeView extends GetView<HomeController> {
                     name: "Netflix Clone",
                     discription: "",
                     imageurl:
-                        "https://tkp9ew6igwri5hif.public.blob.vercel-storage.com/Netflix-uffGGqq1SlDy0FMog78N5h3b2EeRDs.png",
+                        "https://tkp9ew6igwri5hif.public.blob.vercel-storage.com/Netflix-KCG1azBlLx7jCedC6vKcfIiGJw8ipA.jpg",
                   ),
                   ProjectCard(
                     name: "Whatsapp Clone With Modified Features for Business",
